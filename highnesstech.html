@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIGHNESS TECH SOLUTIONS | Software Engineering & Technical Expertise</title>
+    <style>
+        /* --- 1. CSS Reset and Base Styles --- */
+        :root {
+            --color-gold: #FFC72C;        /* Primary Accent */
+            --color-yellow: #FFD700;      /* Slightly brighter Yellow */
+            --color-light-green: #90EE90; /* Secondary Accent */
+            --color-dark-gray: #333;
+            --color-white: #FFFFFF;
+            --color-background: #F8F8F8;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-dark-gray);
+            line-height: 1.6;
+            background-color: var(--color-background);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 2. Navigation Bar --- */
+        .header {
+            background: var(--color-dark-gray);
+            color: var(--color-white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            /* LOGO COLOR REMAINS GOLD */
+            color: var(--color-gold);
+            text-decoration: none;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-list a {
+            color: var(--color-white);
+            text-decoration: none;
+            margin-left: 25px;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-list a:hover {
+            color: var(--color-light-green);
+        }
+
+        /* --- 3. Hero Section --- */
+        .hero {
+            background: var(--color-dark-gray);
+            color: var(--color-white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            /* HEADING COLOR REMAINS GOLD */
+            color: var(--color-gold);
+        }
+
+        .hero h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background: var(--color-yellow);
+            color: var(--color-dark-gray);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--color-light-green);
+            color: var(--color-dark-gray);
+        }
+
+        /* --- 4. Section Styling --- */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--color-white);
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--color-gold);
+            border-bottom: 3px solid var(--color-light-green);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        
+        /* --- 5. About Section --- */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.1em;
+            line-height: 1.8;
+            padding: 0 20px;
+        }
+
+        /* --- 6. Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: var(--color-white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--color-light-green);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--color-dark-gray);
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--color-yellow);
+            padding-bottom: 5px;
+        }
+
+        .service-list li {
+            margin-bottom: 8px;
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        .service-icon {
+            color: var(--color-gold);
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* --- 7. Booking Form Section (NEW) --- */
+        .booking-form-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 30px;
+            background-color: var(--color-white);
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border-left: 5px solid var(--color-yellow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--color-dark-gray);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="date"],
+        .form-group input[type="time"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-light-green);
+            outline: none;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: var(--color-gold);
+            color: var(--color-dark-gray);
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: var(--color-light-green);
+        }
+        
+        #booking-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none; /* Hidden by default */
+            font-weight: bold;
+        }
+
+        /* --- 8. Contact Section --- */
+        .contact {
+            background-color: var(--color-light-green);
+            color: var(--color-dark-gray);
+        }
+
+        .contact p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .contact a {
+            color: var(--color-dark-gray);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .email-link {
+            font-size: 1.5em;
+            color: var(--color-dark-gray);
+            background-color: var(--color-yellow);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        /* --- 9. Footer --- */
+        .footer {
+            background: var(--color-dark-gray);
+            color: var(--color-white);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        /* --- 10. Responsive Design (Media Queries) --- */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero h2 {
+                font-size: 1.2em;
+            }
+            .nav-list {
+                display: none;
+            }
+            .nav-content {
+                justify-content: center;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 60px 0;
+            }
+            .booking-form-wrapper {
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .email-link {
+                font-size: 1.2em;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-content">
+            <a href="#" class="logo">HIGHNESS TECH SOLUTIONS</a>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#book">Book</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>HIGHNESS TECH SOLUTIONS</h1>
+            <h2>Software Engineer & Technical Solutions Expert</h2>
+            <p>"Bridging Software Engineering with Hands-On Technical Solutions."</p>
+            <a href="#book" class="cta-button">Book a Service Now</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About The Founder</h2>
+            <div class="about-content">
+                <p>I am **Tei Andrews Kwabena**, a dedicated **Software Engineer** committed to building robust, efficient, and scalable digital solutions. While my foundation is rooted in code development and system architecture, my professional scope extends powerfully into the physical realm of technology. I specialize in bridging the gap between software precision and hardware execution, offering comprehensive services ranging from **advanced network configurations** and **CCTV/Electric Fence installations** to **in-depth PC troubleshooting** and **gadget servicing**. I believe in providing clients with seamless technical ecosystems, not just isolated repairs. Furthermore, I share my passion for clarity and problem-solving by offering **home tuition in Mathematics and Science**, and specialized tutorials in using the **Scientific Calculator**. Whether I'm deploying a management system or installing a satellite dish, my approach is always guided by the engineering principles of efficiency, reliability, and precision.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Specialized Technical Services</h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <span class="service-icon">🛠️</span>
+                    <h3>Installation & Security</h3>
+                    <ul class="service-list">
+                        <li>**CCTV Camera Installation** (Full Security Systems)</li>
+                        <li>**Electric Fence Installation**</li>
+                        <li>Satellite Dish Installation</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">💻</span>
+                    <h3>Software & Systems</h3>
+                    <ul class="service-list">
+                        <li>Windows Installation & Setup</li>
+                        <li>Software Installation & Configuration</li>
+                        <li>Management System Desktop Computers Troubleshooting</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🌐</span>
+                    <h3>Networking & Hardware</h3>
+                    <ul class="service-list">
+                        <li>Router Configuration & Setup</li>
+                        <li>Networking (Internet Connectivity Solutions)</li>
+                        <li>Gadgets Servicing (Repair and Maintenance)</li>
+                        <li>Desktop Computers Troubleshooting</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">📚</span>
+                    <h3>Education & Training</h3>
+                    <ul class="service-list">
+                        <li>Home Tuition (Mathematics and Science)</li>
+                        <li>Scientific Calculator Tutorials</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="section" style="background-color: var(--color-background);">
+        <div class="container">
+            <h2>Book a Service Appointment</h2>
+            <div class="booking-form-wrapper">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="serviceType">Select Service Required:</label>
+                        <select id="serviceType" required>
+                            <option value="">-- Choose a Service --</option>
+                            <optgroup label="Installation & Security">
+                                <option value="CCTV Installation">CCTV Camera Installation</option>
+                                <option value="Electric Fence">Electric Fence Installation</option>
+                                <option value="Satellite Dish">Satellite Dish Installation</option>
+                            </optgroup>
+                            <optgroup label="Software & Systems">
+                                <option value="Windows/Software Install">Windows/Software Installation</option>
+                                <option value="Management System Troubleshoot">Management System Desktop Troubleshooting</option>
+                            </optgroup>
+                            <optgroup label="Networking & Hardware">
+                                <option value="Router Configuration">Router Configuration / Networking</option>
+                                <option value="Gadgets Servicing">Gadgets Servicing</option>
+                                <option value="Desktop Troubleshooting">Desktop Computers Troubleshooting</option>
+                            </optgroup>
+                            <optgroup label="Education & Training">
+                                <option value="Home Tuition">Home Tuition (Math/Science)</option>
+                                <option value="Calculator Tutorial">Scientific Calculator Tutorial</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientName">Your Full Name:</label>
+                        <input type="text" id="clientName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientEmail">Email Address:</label>
+                        <input type="email" id="clientEmail" value="teiandrews4747@gmail.com" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientPhone">Phone Number:</label>
+                        <input type="text" id="clientPhone" placeholder="E.g., +233 55 123 4567" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="desiredDate">Desired Date:</label>
+                        <input type="date" id="desiredDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="desiredTime">Desired Time:</label>
+                        <input type="time" id="desiredTime" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Detailed Description of Request/Issue:</label>
+                        <textarea id="message" rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit Booking Request</button>
+
+                    <p id="booking-message" style="background-color: var(--color-light-green); color: var(--color-dark-gray);">
+                        </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>For quick questions or general inquiries, you can still contact me directly:</p>
+            <a href="mailto:teiandrews4747@gmail.com" class="email-link">
+                📧 teiandrews4747@gmail.com
+            </a>
+            <p style="margin-top: 20px; font-size: 1em;">I look forward to discussing your technical needs.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 HIGHNESS TECH SOLUTIONS. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth Scrolling Functionality
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Booking Form Submission Handler
+            const bookingForm = document.getElementById('bookingForm');
+            const bookingMessage = document.getElementById('booking-message');
+
+            bookingForm.addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent the default form submission (which reloads the page)
+
+                // Gather form data
+                const service = document.getElementById('serviceType').value;
+                const name = document.getElementById('clientName').value;
+                const phone = document.getElementById('clientPhone').value;
+                const date = document.getElementById('desiredDate').value;
+                const time = document.getElementById('desiredTime').value;
+                const details = document.getElementById('message').value;
+
+                // Generate mailto link for manual email confirmation
+                const emailBody = `Booking Request from: ${name}\n\nService: ${service}\nDate: ${date} at ${time}\nPhone: ${phone}\nDetails: ${details}`;
+                const mailtoLink = `mailto:teiandrews4747@gmail.com?subject=New Service Booking Request: ${service}&body=${encodeURIComponent(emailBody)}`;
+
+
+                // Display confirmation message
+                bookingMessage.style.display = 'block';
+                bookingMessage.innerHTML = `
+                    ✅ **Booking Submitted!** Thank you, ${name}. Your request for **${service}** on ${date} at ${time} has been noted.
+                    <br><br>
+                    **Next Step:** Click <a href="${mailtoLink}" style="color: blue; text-decoration: underline; font-weight: bold;">HERE to send the details via email</a> to confirm the booking process!
+                `;
+
+                // Clear the form fields after successful submission
+                bookingForm.reset();
+            });
+        });
+    </script>
+
+</body>
+</html>
